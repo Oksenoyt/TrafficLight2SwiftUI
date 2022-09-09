@@ -13,7 +13,6 @@ struct ContentView: View {
     @State private var yellowColorOpacity = 0.4
     @State private var greenColorOpacity = 0.4
     @State private var textButton = "START"
-    
     @State private var includedColor = 0
     
     
@@ -21,18 +20,18 @@ struct ContentView: View {
         ZStack {
             Color(.black)
                 .ignoresSafeArea()
-            VStack {
+            VStack(spacing: 20.0) {
                 ColorCircleView(color: .red).opacity(redColorOpacity)
                 ColorCircleView(color: .yellow).opacity(yellowColorOpacity)
                 ColorCircleView(color: .green).opacity(greenColorOpacity)
                 Spacer()
-                startButton
+                changeButton
             }
             .padding(10)
         }
     }
     
-    private var startButton: some View {
+    private var changeButton: some View {
         Button(action: changeButtonTapped) {
             Text(textButton)
                 .frame(width: 130, height: 40)
@@ -40,7 +39,8 @@ struct ContentView: View {
                 .accentColor(Color.white)
                 .background(Color.blue)
                 .cornerRadius(15)
-                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.white,lineWidth: 4))
+                .overlay(RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color.white,lineWidth: 4))
         }
     }
     
@@ -67,5 +67,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.portrait)
     }
 }
